@@ -1,5 +1,5 @@
 <template>
 	<p>
-		home
+		artists
 	</p>
 </template>

@@ -4,11 +4,12 @@ import { RouterLink } from 'vue-router'
 
 <template>
 	<nav>
-		<RouterLink to="/">Home</RouterLink>
-		<RouterLink to="/about">Songs</RouterLink>
-		<RouterLink to="/about">Albums</RouterLink>
-		<RouterLink to="/about">Artists</RouterLink>
-		<RouterLink to="/about">Users</RouterLink>
+		<RouterLink to="/">Home</RouterLink> <!-- Retirer de la, home en cliquant sur le logo ? -->
+		<RouterLink to="/songs">Songs</RouterLink>
+		<RouterLink to="/albums">Albums</RouterLink>
+		<RouterLink to="/artists">Artists</RouterLink>
+		<RouterLink to="/users">Users</RouterLink>
+		<RouterLink to="/about">About</RouterLink>
 	</nav>
 </template>
 

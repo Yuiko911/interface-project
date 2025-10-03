@@ -1,18 +1,16 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue';
-import { ref } from 'vue';
-
-const loggedin = ref(false)
 </script>
 
 <template>
 	<header>
-		<img alt="Betterboxd logo" class="logo" src="@/assets/logo.png" />
+		<div>
+			<RouterLink to="/"><img alt="Betterboxd logo" class="logo" src="@/assets/logo.png" /></RouterLink>
+		</div>
 		<Navbar />
-		<div @click="loggedin = !loggedin">
-			<div v-if="loggedin">Register</div>
-			<div v-else>Profile</div>
+		<div>
+			<RouterLink to="/signin">Register</RouterLink>
 		</div>
 	</header>
 	<div class="spacer"></div>
@@ -21,7 +19,13 @@ const loggedin = ref(false)
 		<RouterView />
 	</main>
 
-	
+	<div>
+		Discover what users had to say
+	</div>
+
+	<footer>
+		feet
+	</footer>
 
 </template>
 
@@ -56,9 +60,10 @@ header {
 	width: 100%;
 }
 
-main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;	
+footer {
+	border-top: 2px solid lightgrey;
+	
+	width: 100%;
+	margin-top: auto;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
 	<p>
-		home
+		users
 	</p>
 </template>
