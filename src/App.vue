@@ -60,6 +60,11 @@ header {
 	width: 100%;
 }
 
+main {
+	min-width: 75%;
+	min-height: 500px; /* Might not be useful */
+}
+
 footer {
 	border-top: 2px solid lightgrey;
 	
