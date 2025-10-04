@@ -37,8 +37,15 @@ const reviews = [
 		</div>
 	</div>
 
-	<div class="songlist"> <!--TODO: Make hidden by default ?-->
-		<p v-for="song in tracks">{{ song.name }} ... {{ song.duration }}</p>
+	<div class="album-data">
+		<div class="songlist"> <!--TODO: Make hidden by default ?-->
+			<p v-for="song in tracks">{{ song.name }} ... {{ song.duration }}</p>
+		</div>
+		<div class="description"> <!--TODO: Make hidden by default ?-->
+			<p>Genre: Electronic</p>
+			<p>Style: Hardcore, J-Core, Dubstep, Drum n Bass, Speedcore, Hard Techno</p>
+			<p>Rating : 5/5</p>
+		</div>
 	</div>
 
 	<div class="reviews">
@@ -89,15 +96,25 @@ const reviews = [
 	border-bottom: 2px solid lightgray;
 }
 
+.album-data {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
 .songlist {
 	background-color: rgb(240, 255, 216);
-
+	width: 50%;
 	min-height: 100px;
+}
+
+.description {
+	background-color: rgb(222, 255, 216);
+	width: 50%;
 }
 
 .reviews {
 	background-color: rgb(216, 255, 247);
-
 	min-height: 100px;
 }
 </style>
