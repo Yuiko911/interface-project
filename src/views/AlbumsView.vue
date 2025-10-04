@@ -104,13 +104,13 @@ const reviews = [
 
 .songlist {
 	background-color: rgb(240, 255, 216);
-	width: 50%;
+	width: 60%;
 	min-height: 100px;
 }
 
 .description {
 	background-color: rgb(222, 255, 216);
-	width: 50%;
+	width: 40%;
 }
 
 .reviews {
