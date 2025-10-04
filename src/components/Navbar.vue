@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import AuthForm from './AuthForm.vue';
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import { RouterLink } from 'vue-router'
 		<RouterLink to="/artists">Artists</RouterLink>
 		<RouterLink to="/users">Users</RouterLink>
 		<RouterLink to="/about">About</RouterLink>
+		<AuthForm />
 	</nav>
 </template>
 
