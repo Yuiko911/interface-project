@@ -61,7 +61,7 @@ header {
 }
 
 main {
-	min-width: 75%;
+	width: 75%;
 	min-height: 500px; /* Might not be useful */
 }
 
