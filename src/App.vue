@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue';
+import Footer from './components/Footer.vue';
+import RegisterButton from './components/RegisterButton.vue';
 </script>
 
 <template>
@@ -8,10 +10,8 @@ import Navbar from './components/Navbar.vue';
 		<div>
 			<RouterLink to="/"><img alt="Betterboxd logo" class="logo" src="@/assets/logo.png" /></RouterLink>
 		</div>
-		<Navbar />
-		<div>
-			<RouterLink to="/signin">Register</RouterLink>
-		</div>
+		<Navbar class="navbar-text" />
+		<RegisterButton :is-logged="false"/>
 	</header>
 	<div class="spacer"></div>
 
@@ -24,7 +24,7 @@ import Navbar from './components/Navbar.vue';
 	</div>
 
 	<footer>
-		feet
+		<Footer />
 	</footer>
 
 </template>
@@ -41,14 +41,27 @@ header {
 	width: 100%;
 
 	display: flex;
-	justify-content: space-between;
+	align-items: center;
 
 	background-color: white;
-	border-bottom: 2px solid lightgray;
+	border-bottom: 2px solid var(--lighter-grey);
+}
+
+header > :first-child {
+	margin-left: 20px;
+}
+
+header > :nth-child(2) {
+	margin-left: auto;
+	margin-right: 40px;
+}
+
+header > :last-child {
+	margin-right: 20px;
 }
 
 .logo {
-	height: 100%;
+	height: 50px;
 }
 
 .spacer {
@@ -62,13 +75,22 @@ header {
 
 main {
 	width: 75%;
-	min-height: 500px; /* Might not be useful */
+	min-height: 500px;
+	/* Might not be useful */
 }
 
 footer {
-	border-top: 2px solid lightgrey;
-	
+	background-color: var(--background-color);
+
 	width: 100%;
+	height: 100px;
 	margin-top: auto;
+
+	display: flex;
+	justify-content: center;
+	/* Centers child horizontally */
+	align-items: center;
+	/* Centers child vertically */
+
 }
 </style>
