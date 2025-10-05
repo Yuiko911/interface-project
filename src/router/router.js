@@ -34,7 +34,21 @@ const router = createRouter({
 			name: 'about',
 			component: () => import('../views/AboutView.vue'),
 		},
-
+		{
+			path: '/songs/:id',
+			name: 'song',
+			component: () => import('../views/SongPage.vue'),
+		},
+		{
+			path: '/albums/:id',
+			name: 'album',
+			component: () => import('../views/AlbumPage.vue'),
+		},
+		{
+			path: '/artists/:id',
+			name: 'artist',
+			component: () => import('../views/ArtistPage.vue'),
+		},
 		{
 			path: '/signin',
 			name: 'signin',
