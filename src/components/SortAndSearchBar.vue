@@ -12,7 +12,7 @@
 			<div class="browse-categories-category">Rating</div>
 			<!-- <div class="browse-categories-category">Popularity</div> -->
 		</div>
-		<div class="search-text-input"><input type="text" name="" id="" placeholder="Search a song"></div>
+		<div class="search-text-input"><input type="text" name="" id="" placeholder="Search..."></div>
 	</div>
 </template>
 

@@ -8,13 +8,14 @@ const songs = Array.from({length: 21}, (_, i) => Object({id: i, cover:"/src/asse
 <template>
 	<SortAndSearchBar />
 	<div class="results">
-		<a class="result-card" v-for="song in songs" :href="`/albums/${ song.id }`">
+		<a class="result-card" v-for="song in songs" :href="`/songs/${ song.id }`">
 			<img :src="song.cover" alt="">
 			<div class="song-title">{{ song.title }}</div>
 		</a>
 	</div>
 	<div class="other-pages">
-
+		< 1 2 3 ... 100 >
+		<!-- TODO: Implement -->
 	</div>
 </template>
 
@@ -46,5 +47,9 @@ const songs = Array.from({length: 21}, (_, i) => Object({id: i, cover:"/src/asse
 .song-title {
 	color: black;
 	text-decoration: none;
+}
+
+.other-pages {
+	text-align: center;
 }
 </style>
