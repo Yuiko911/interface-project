@@ -5,7 +5,7 @@
 - Song page
 	- Album page
 	- Artist page
-- Song search-bar
+- ~~Song search-bar~~ (should be usable with other pages with emits maybe)
 - Song search-card
 	- Album search
 	- Artists search
