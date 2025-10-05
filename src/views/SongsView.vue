@@ -1,31 +1,6 @@
 <script setup>
-const songs = [
-	{cover: "/src/assets/album-placeholder.png", title: "Title 2"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 1"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 3"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 4"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 5"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 6"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 7"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 8"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 9"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 10"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 11"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 12"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 13"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 14"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-	{cover: "/src/assets/album-placeholder.png", title: "Title 15"},
-]
+const songs = Array.from({length: 21}, (_, i) => Object({id: i, cover:"/src/assets/album-placeholder.png", title: `Title ${i}`}))
+
 </script>
 
 <template>
@@ -42,10 +17,10 @@ const songs = [
 		<div class="search-text-input"><input type="text" name="" id=""></div>
 	</div>
 	<div class="results">
-		<div class="result-card" v-for="song in songs">
-			<img :src="song.cover" alt="" width="100px">
+		<a class="result-card" v-for="song in songs" :href="`/albums/${ song.id }`">
+			<img :src="song.cover" alt="">
 			<div>{{ song.title }}</div>
-		</div>
+		</a>
 	</div>
 </template>
 
@@ -72,12 +47,22 @@ const songs = [
 	background-color: rgb(255, 235, 235);
 
 	max-width: 100%;
-	padding: 10px;
+	padding: 20px 50px;
 
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 
-	gap: 10px;
+	justify-content: center;
+
+	gap: 30px;
+}
+
+.result-card {
+	/* TODO: This */
+}
+
+.result-card>img {
+	width: 160px;
 }
 </style>
