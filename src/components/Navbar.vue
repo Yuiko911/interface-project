@@ -11,7 +11,8 @@ import AuthForm from './AuthForm.vue';
 		<RouterLink to="/artists">Artists</RouterLink>
 		<RouterLink to="/users">Users</RouterLink>
 		<RouterLink to="/about">About</RouterLink>
-		<AuthForm />
+		<RouterLink v-if ="!user" to="/AuthForm">Register</RouterLink>
+		<RouterLink v-if ="user" to="/profile">Profile</RouterLink>
 	</nav>
 </template>
 

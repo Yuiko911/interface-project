@@ -10,7 +10,7 @@ import Navbar from './components/Navbar.vue';
 		</div>
 		<Navbar />
 		<div>
-			<RouterLink to="/signin">Register</RouterLink>
+			<RouterLink v-if="!user.value" to="/AuthForm">Register</RouterLink>
 		</div>
 	</header>
 	<div class="spacer"></div>

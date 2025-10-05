@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { useAuth } from '../useAuth.js'
+import { ref } from 'vue'
+export const user = useAuth()
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,11 +39,24 @@ const router = createRouter({
 		},
 
 		{
-			path: '/signin',
-			name: 'signin',
-			component: () => import('../views/SignInView.vue'),
+			path: '/Profile',
+			name: 'profile',
+			component: () => import('../views/ProfileView.vue'),
+			meta: { requiresAuth: true },
 		},
+		{
+			path: '/AuthForm',
+			name: 'authForm',
+			component: () => import('../components/AuthForm.vue'),
+		}
 	],
+	
+})
+router.beforeEach((to) => {
+  const { user } = useAuth()
+  if (to.meta.requiresAuth && !user.value) {
+    return '/AuthForm'
+  }
 })
 
 export default router
