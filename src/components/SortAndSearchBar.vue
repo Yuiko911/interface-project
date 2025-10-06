@@ -1,12 +1,13 @@
 <script setup>
+import debounce from 'lodash.debounce'
 import { ref } from 'vue'
 
 const query = ref('')
 
 const emit = defineEmits(['search'])
-function search() {
+const search = debounce(() => {
   emit('search', query.value)
-}
+}, 500)
 
 const filterOptions = [
   { label: 'All', value: 'all' },
