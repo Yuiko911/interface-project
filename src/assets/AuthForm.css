@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f3f4f6;
+  background: #ffffff;
   font-family: 'Inter', sans-serif;
 }
 
@@ -36,7 +36,7 @@
 
 .auth-card input:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: #275aca;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
@@ -58,17 +58,17 @@
 }
 
 .btn-green {
-  background: #10b981;
+  background: #1bb910;
 }
 .btn-green:hover {
   background: #059669;
 }
 
 .btn-blue {
-  background: #3b82f6;
+  background: #0542a5;
 }
 .btn-blue:hover {
-  background: #2563eb;
+  background: #042263;
 }
 
 .btn-red {

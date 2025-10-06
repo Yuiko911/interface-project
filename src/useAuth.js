@@ -25,3 +25,6 @@ export function useAuth() {
 
   return { user, signUp, signIn, signOut }
 }
+supabase.auth.onAuthStateChange((_, session) => {
+  user.value = session?.user ?? null
+})

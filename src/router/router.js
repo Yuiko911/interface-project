@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
-import { user } from '../useAuth.js' // must be a ref exported from useAuth.js
+import { useAuth } from '../useAuth.js'
+
+const { user } = useAuth()
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,7 +26,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   if (to.meta.requiresAuth && !user.value) {
-    return '/AuthForm'
+    return { name: 'authForm' }
   }
 })
 

@@ -20,3 +20,8 @@ const handleSignOut = async () => {
       </p>
 	</p>
 </template>
+<style scoped>
+.btn.btn-red.w-full {
+  width: 80px;
+}
+</style>
