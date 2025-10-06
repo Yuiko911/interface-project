@@ -6,42 +6,38 @@ import { searchDiscogs } from '../api/discogs.js'
 const albums = ref([])
 
 onMounted(async () => {
-  const data = await searchDiscogs('Radiohead', 'release')
-  albums.value = data.results
+	const data = await searchDiscogs('Radiohead', 'release')
+	albums.value = data.results
 })
 </script>
 
 <template>
-  <SortAndSearchBar />
 
-  <div>
-    <h1>Albums</h1>
-    <div class="grid">
-      <RouterLink
-        v-for="album in albums"
-        :key="album.id"
-        :to="`/albums/${album.id}`"
-        class="card"
-      >
-        <img :src="album.cover_image" alt="" width="150" />
-        <p>{{ album.title }}</p>
-      </RouterLink>
-    </div>
-  </div>
+	<div>
+		<h1>Albums</h1>
+		<SortAndSearchBar />
+		<div class="grid">
+			<RouterLink v-for="album in albums" :key="album.id" :to="`/albums/${album.id}`" class="card">
+				<img :src="album.cover_image" alt="" width="150" />
+				<p>{{ album.title }}</p>
+			</RouterLink>
+		</div>
+	</div>
 </template>
 
 <style scoped>
 .grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
 }
+
 .card {
-  text-decoration: none;
-  color: black;
-  text-align: center;
-  height: auto;
-  width: 150px;
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	height: auto;
+	width: 150px;
 }
 </style>

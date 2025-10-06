@@ -19,9 +19,9 @@ onMounted(async () => {
 </script>
 
 <template>
-	<SortAndSearchBar />
-	<div>
+  <div>
     <h1>Featured Artists</h1>
+    <SortAndSearchBar />
     <div class="grid">
       <div v-for="artist in artists" :key="artist.id" class="card">
         <img :src="artist.cover_image" alt="" width="150" />
