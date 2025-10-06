@@ -14,15 +14,58 @@ onMounted(async () => {
     return
   }
   album.value = await fetchAlbum(id)
+  console.log(album.value)
 })
 </script>
 
 <template>
-  <div v-if="album">
+  <!-- <div v-if="album">
     <h1>{{ album.title }}</h1>
     <img :src="album.images?.[0]?.uri" alt="album cover" />
+  </div> -->
+
+  <div v-if="album">
+	<div class="metadata">
+		<div class="album-jacket">
+			<img :src="album.images?.[0]?.uri" alt="album cover">
+		</div>
+		<div class="album-info">
+			<h1 class="album-title">{{ album.title }}</h1>
+			<div class="separator"></div>
+			<h2 class="album-artist" v-if="album.artists?.length">{{ album.artists[0]?.name }}</h2>
+			<div class="album-release-date">{{ album.released_formatted }}</div>
+		</div>
+	</div>
+
+	<div class="album-data">
+		<table class="songlist"> <!--TODO: Make hidden by default ?-->
+			<tr>
+				<th>#</th>
+				<th>Title</th>
+				<th>Length</th>
+			</tr>
+			<tr v-for="track in album.tracklist">
+				<td>{{ track.position }}</td>
+				<td>{{ track.title }}</td>
+				<td>{{ track.duration }}</td>
+			</tr>
+		</table>
+		<div class="description"> <!--TODO: Make hidden by default ?-->
+			<p>Genre: {{ album.genres?.join([separator = ', ']) }}</p>
+			<p>Style: {{ album.styles?.join([separator = ', ']) }}</p>
+			<p>Rating : 5/5</p> <!--TODO-->
+		</div>
+	</div>
+
+	<div class="reviews">
+		<!-- <p v-for="review in reviews">{{ review.user }} : "{{ review.body }}" at {{ review.timeOfReview }}</p> -->
+	</div>
+  </div>
+  <div v-else>
+
   </div>
 </template>
+
 <style scoped>
 .metadata {
 	/* background-color: rgb(255, 244, 234); */
