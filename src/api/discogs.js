@@ -24,7 +24,7 @@ export async function getRelease(id) {
 }
 export async function fetchAlbum(id) {
   console.log('Album ID:', id)
-  const res = await fetch(`${BASE_URL}/releases/${id}?token=${DISCOGS_TOKEN}`)
+  const res = await fetch(`${BASE_URL}/masters/${id}?token=${DISCOGS_TOKEN}`)
   return res.json()
 }
 
