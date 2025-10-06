@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchSong } from '../api/discogs.js'
-
+import Reviews from './Reviews.vue'
 const route = useRoute()
 const song = ref(null)
 
@@ -23,4 +23,5 @@ onMounted(async () => {
   <div v-else>
     Loading song...
   </div>
+  <Reviews itemType="song" :itemId="route.params.id" />
 </template>

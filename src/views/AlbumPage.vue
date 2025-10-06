@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchAlbum } from '../api/discogs.js'
-
+import Reviews from './Reviews.vue'
 const route = useRoute()
 const album = ref(null)
 
@@ -21,6 +21,9 @@ onMounted(async () => {
   <div v-if="album">
     <h1>{{ album.title }}</h1>
     <img :src="album.images?.[0]?.uri" alt="album cover" />
+  </div>
+  <div>
+	<Reviews itemType="album" :itemId="route.params.id" />
   </div>
 </template>
 <style scoped>
