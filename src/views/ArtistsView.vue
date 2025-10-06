@@ -57,15 +57,6 @@ watch(search, async (query) => {
 	gap: 30px;
 }
 
-.result-card {
-	/* TODO: This */
-	text-decoration: none;
-}
-
-.result-card>img {
-	width: 160px;
-}
-
 .artist-name {
 	color: black;
 	text-decoration: none;
@@ -74,8 +65,9 @@ watch(search, async (query) => {
 .other-pages {
 	text-align: center;
 }
-.grid{
-	display: flex;
+
+.grid {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
@@ -92,10 +84,12 @@ watch(search, async (query) => {
   padding: 10px;
   background-color: #fafafa;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: black;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 

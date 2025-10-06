@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchSong } from '../api/discogs.js'
+import Reviews from './Reviews.vue'
 
 const route = useRoute()
 const single = ref(null)
@@ -41,6 +42,7 @@ onMounted(async () => {
 	</div>
 
 	<div class="reviews">
+		<Reviews itemType="song" :itemId="route.params.id" />
 		<!-- <p v-for="review in reviews">{{ review.user }} : "{{ review.body }}" at {{ review.timeOfReview }}</p> -->
 	</div>
 

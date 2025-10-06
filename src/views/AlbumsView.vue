@@ -72,5 +72,14 @@ watch(search, async (query) => {
   margin-top: 10px;
   font-weight: 600;
   font-size: 14px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card p {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 14px;
 }
 </style>

@@ -1,5 +1,5 @@
 .auth-container {
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,8 +36,8 @@
 
 .auth-card input:focus {
   outline: none;
-  border-color: #275aca;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  border-color: #060606;
+  box-shadow: 0 0 0 2px rgba(245, 219, 56, 0.2);
 }
 
 .auth-buttons {
@@ -58,17 +58,17 @@
 }
 
 .btn-green {
-  background: #1bb910;
+  background: #fca503;
 }
 .btn-green:hover {
-  background: #059669;
+  background: #dd7f0c;
 }
 
 .btn-blue {
-  background: #0542a5;
+  background: #000000;
 }
 .btn-blue:hover {
-  background: #042263;
+  background: #353638;
 }
 
 .btn-red {
