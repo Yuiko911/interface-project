@@ -1,4 +1,18 @@
 <script setup>
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { getArtist } from '../api/discogs.js'
+
+const route = useRoute()
+const artist = ref(null)
+
+onMounted(async () => {
+  const id = route.params.id
+  if (!id) return
+  artist.value = await getArtist(id)
+  console.log(artist.value)
+})
+
 const reviews = [
 	{ user: 'User 1', body: 'Review of the artist', timeOfReview: '21:31' },
 	{ user: 'User 2', body: 'Review of the artist', timeOfReview: '21:31' },
@@ -12,30 +26,32 @@ const reviews = [
 </script>
 
 <template>
-	<div class="metadata">
-		<div class="artist-picture">
-			<img src="/src/assets/album-placeholder.png" alt="artist picture">
+	<div v-if="artist">
+		<div class="metadata">
+			<div class="artist-picture">
+				<img :src="artist.images[0]?.uri" alt="artist picture">
+			</div>
+			<div class="artist-info">
+				<h1 class="artist-name">{{ artist.name }}</h1>
+				<div class="separator"></div>
+				<h2 class="artist-origin">Origin</h2>
+				<div class="artist-birthday">21 September 1999</div>
+			</div>
 		</div>
-		<div class="artist-info">
-			<h1 class="artist-name">Artist {{ $route.params.id }}</h1>
-			<div class="separator"></div>
-			<h2 class="artist-origin">Origin</h2>
-			<div class="artist-birthday">21 September 1999</div>
+	
+		<div class="artist-data">
+			<div class="description"> <!--TODO: Make hidden by default ?-->
+				<p>{{ artist.profile }}</p>
+			</div>
+		</div>
+	
+		<div class="reviews">
+			<p v-for="review in reviews">{{ review.user }} : "{{ review.body }}" at {{ review.timeOfReview }}</p>
 		</div>
 	</div>
-
-	<div class="artist-data">
-		<div class="description"> <!--TODO: Make hidden by default ?-->
-			<p>Genre: Electronic</p>
-			<p>Style: Hardcore, J-Core, Dubstep, Drum n Bass, Speedcore, Hard Techno</p>
-			<p>Rating : 5/5</p>
-		</div>
+	<div v-else>
+		Loading artist...
 	</div>
-
-	<div class="reviews">
-		<p v-for="review in reviews">{{ review.user }} : "{{ review.body }}" at {{ review.timeOfReview }}</p>
-	</div>
-
 </template>
 
 <style scoped>
@@ -105,7 +121,7 @@ const reviews = [
 .description {
 	/* background-color: rgb(222, 255, 216); */
 	/* margin-left: auto; */
-	width: 40%;
+	width: 70%;
 }
 
 .reviews {
