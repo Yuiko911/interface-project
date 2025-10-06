@@ -1,4 +1,4 @@
-<script setup>
+<script setup> // Cette vue ne sert plus, je l'ai mis dans la navBar:  Gaspard
 import { RouterLink } from 'vue-router'
 
 const props = defineProps({

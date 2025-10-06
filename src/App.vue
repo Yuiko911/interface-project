@@ -12,12 +12,7 @@ const { user } = useAuth();
 		<div>
 			<RouterLink to="/"><img alt="Betterboxd logo" class="logo" src="@/assets/logo.png" /></RouterLink>
 		</div>
-		<Navbar class="navbar-text" />
-		<RegisterButton :is-logged="false"/>
 		<Navbar />
-		<div>
-			<RouterLink v-if="!user" to="/AuthForm">Register</RouterLink>
-		</div>
 	</header>
 	<div class="spacer"></div>
 
