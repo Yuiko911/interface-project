@@ -6,7 +6,7 @@ import { searchDiscogs } from '../api/discogs.js'
 const albums = ref([])
 
 onMounted(async () => {
-	const data = await searchDiscogs('Radiohead', 'release')
+	const data = await searchDiscogs('Radiohead', 'master', 'album')
 	albums.value = data.results
 })
 </script>

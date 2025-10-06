@@ -5,10 +5,9 @@ import SortAndSearchBar from '@/components/SortAndSearchBar.vue'
 const songs = ref([])
 
 onMounted(async () => {
-  const data = await searchDiscogs('Daft Punk', 'master') // “master” = songs/albums
+  const data = await searchDiscogs('Daft Punk', 'master', 'single')
   songs.value = data.results
   songs.value = data.results.filter(item => item.cover_image)
-
 })
 </script>
 
