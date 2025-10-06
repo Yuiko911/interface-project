@@ -18,7 +18,7 @@ onMounted(async () => {
 		<SortAndSearchBar />
 		<div class="grid">
 			<RouterLink v-for="album in albums" :key="album.id" :to="`/albums/${album.id}`" class="card">
-				<img :src="album.cover_image" alt="" width="150" />
+				<img :src="album.cover_image" alt="" width="150" height="150" />
 				<p>{{ album.title }}</p>
 			</RouterLink>
 		</div>
