@@ -3,6 +3,8 @@ import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer.vue';
 import RegisterButton from './components/RegisterButton.vue';
+import { useAuth } from './useAuth.js';
+const { user } = useAuth();
 </script>
 
 <template>
@@ -12,6 +14,10 @@ import RegisterButton from './components/RegisterButton.vue';
 		</div>
 		<Navbar class="navbar-text" />
 		<RegisterButton :is-logged="false"/>
+		<Navbar />
+		<div>
+			<RouterLink v-if="!user" to="/AuthForm">Register</RouterLink>
+		</div>
 	</header>
 	<div class="spacer"></div>
 

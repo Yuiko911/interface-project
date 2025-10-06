@@ -13,6 +13,7 @@
     "test:unit": "vitest"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.58.0",
     "pinia": "^3.0.3",
     "vue": "^3.5.22",
     "vue-router": "^4.5.1"
@@ -20,7 +21,10 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/test-utils": "^2.4.6",
+    "autoprefixer": "^10.4.21",
     "jsdom": "^27.0.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.14",
     "vite": "^7.1.7",
     "vite-plugin-vue-devtools": "^8.0.2",
     "vitest": "^3.2.4"

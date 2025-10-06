@@ -1,5 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { useAuth } from '../useAuth.js';
+const { user } = useAuth();
 </script>
 
 <template>
@@ -8,6 +10,8 @@ import { RouterLink } from 'vue-router'
 		<RouterLink class="link" to="/albums">Albums</RouterLink>
 		<RouterLink class="link" to="/artists">Artists</RouterLink>
 		<RouterLink class="link" to="/users">Users</RouterLink>
+		<RouterLink v-if ="!user" to="/AuthForm">Register</RouterLink>
+		<RouterLink v-if ="user" to="/profile">Profile</RouterLink>
 	</nav>
 </template>
 

@@ -1,7 +1,5 @@
-// src/useAuth.js
 import { ref } from 'vue'
 import { supabase } from './supabase'
-
 const user = ref(null)
 
 supabase.auth.onAuthStateChange((event, session) => {
@@ -11,7 +9,7 @@ supabase.auth.onAuthStateChange((event, session) => {
 export function useAuth() {
   async function signUp(email, password) {
     const { data, error } = await supabase.auth.signUp({ email, password })
-    return { data, error }
+    return { data, error, user, signIn, signUp, signOut }
   }
 
   async function signIn(email, password) {
