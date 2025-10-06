@@ -40,7 +40,7 @@ const reviews = [
 		</div>
 	
 		<div class="artist-data">
-			<div class="description"> <!--TODO: Make hidden by default ?-->
+			<div class="description">
 				<p>{{ artist.profile }}</p>
 			</div>
 		</div>
@@ -56,7 +56,6 @@ const reviews = [
 
 <style scoped>
 .metadata {
-	/* background-color: rgb(255, 244, 234); */
 	margin: 20px 0;
 
 	display: flex;
@@ -64,8 +63,6 @@ const reviews = [
 }
 
 .artist-picture {
-	/* background-color: rgb(255, 238, 234); */
-
 	width: 50%;
 	padding: 20px 0;
 }
@@ -101,11 +98,6 @@ const reviews = [
 	margin-top: 0;
 }
 
-/* .separator {
-	width: 80%;
-	border-bottom: 2px solid lightgray;
-} */
-
 .artist-data {
 	padding: 0 20px;
 	margin: 20px 0;
@@ -119,13 +111,10 @@ const reviews = [
 }
 
 .description {
-	/* background-color: rgb(222, 255, 216); */
-	/* margin-left: auto; */
 	width: 70%;
 }
 
 .reviews {
-	/* background-color: rgb(216, 255, 247); */
 	min-height: 100px;
 	margin: 20px 0;
 }
