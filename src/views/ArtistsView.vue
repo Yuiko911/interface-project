@@ -1,10 +1,11 @@
 <script setup>
 import SortAndSearchBar from '@/components/SortAndSearchBar.vue';
 import { searchDiscogs } from '../api/discogs.js';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 
 const featuredArtists = ['Muse', 'Daft Punk', 'Taylor Swift', 'Gorillaz', 'Arctic Monkeys']
 const artists = ref([])
+const search = ref('')
 
 onMounted(async () => {
   const results = []
@@ -16,17 +17,22 @@ onMounted(async () => {
   }
   artists.value = results
 })
+
+watch(search, async (query) => {
+  let data = await searchDiscogs(query, 'artist')
+  artists.value = data.results
+})
 </script>
 
 <template>
   <div>
-    <h1>Featured Artists</h1>
-    <SortAndSearchBar />
+    <h1>Artists</h1>
+    <SortAndSearchBar v-on:search="(s) => search = s"/>
     <div class="grid">
-      <div v-for="artist in artists" :key="artist.id" class="card">
+      <RouterLink v-for="artist in artists" :key="artist.id" :to="`/artists/${artist.id}`" class="card">
         <img :src="artist.cover_image" alt="" width="150" />
         <p>{{ artist.title }}</p>
-      </div>
+      </RouterLink>
     </div>
   </div>
 	<div class="other-pages">
