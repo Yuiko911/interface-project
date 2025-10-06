@@ -12,3 +12,6 @@
 - Home page
 - "Discover what users [...]"
 - Signin / Register
+
+- Search bar
+- Inside files

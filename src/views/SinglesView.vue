@@ -2,28 +2,28 @@
 import { ref, onMounted } from 'vue'
 import { searchDiscogs } from '../api/discogs.js'
 import SortAndSearchBar from '@/components/SortAndSearchBar.vue'
-const songs = ref([])
+const singles = ref([])
 
 onMounted(async () => {
   const data = await searchDiscogs('Daft Punk', 'master', 'single')
-  songs.value = data.results
-  songs.value = data.results.filter(item => item.cover_image)
+  singles.value = data.results
+  singles.value = data.results.filter(item => item.cover_image)
 })
 </script>
 
 <template>
   <div>
-    <h1>Songs</h1>
+    <h1>Singles</h1>
     <SortAndSearchBar />
     <div class="grid">
       <RouterLink
-        v-for="song in songs"
-        :key="song.id"
-        :to="`/songs/${song.id}`"
+        v-for="single in singles"
+        :key="single.id"
+        :to="`/singles/${single.id}`"
         class="card"
       >
-        <img :src="song.cover_image" alt="" width="150" />
-        <p>{{ song.title }}</p>
+        <img :src="single.cover_image" alt="" width="150" />
+        <p>{{ single.title }}</p>
       </RouterLink>
     </div>
   </div>

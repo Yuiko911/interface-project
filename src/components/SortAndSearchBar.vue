@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import { searchDiscogs } from '../api/discogs.js'
 
 const query = ref('')
-const type = ref('artist') // artist, release (album), master (song)
+const type = ref('artist')
 const filter = ref('all')
 const results = ref([])
 

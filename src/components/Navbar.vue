@@ -7,7 +7,7 @@ const { user } = useAuth()
 
 <template>
   <nav>
-    <RouterLink class="link" to="/songs">Songs</RouterLink>
+    <RouterLink class="link" to="/singles">Singles</RouterLink>
     <RouterLink class="link" to="/albums">Albums</RouterLink>
     <RouterLink class="link" to="/artists">Artists</RouterLink>
     <RouterLink class="link" to="/users">Users</RouterLink>
