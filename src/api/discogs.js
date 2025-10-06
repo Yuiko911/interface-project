@@ -1,8 +1,14 @@
 const DISCOGS_TOKEN = 'bSCOGLLQwsiPYjDearRDkYgSympxWDdobbVBxqsy'
 const BASE_URL = 'https://api.discogs.com'
 
-export async function searchDiscogs(query, type = 'artist') {
-  const res = await fetch(`${BASE_URL}/database/search?q=${encodeURIComponent(query)}&type=${type}&token=${DISCOGS_TOKEN}`)
+export async function searchDiscogs(query, type, format) {
+  let apiurl = `${BASE_URL}/database/search?q=${encodeURIComponent(query)}&type=${type}&token=${DISCOGS_TOKEN}`
+
+  if (type !== "artist") {
+    apiurl += `&format=${format}`
+  }
+
+  const res = await fetch(apiurl)
   if (!res.ok) throw new Error('Discogs API error')
   return await res.json()
 }
