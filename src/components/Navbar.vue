@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import AuthForm from './AuthForm.vue';
+import { useAuth } from '../useAuth.js';
+const { user } = useAuth();
 </script>
 
 <template>

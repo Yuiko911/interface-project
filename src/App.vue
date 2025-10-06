@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue';
+import { useAuth } from './useAuth.js';
+const { user } = useAuth();
 </script>
 
 <template>
@@ -10,7 +12,7 @@ import Navbar from './components/Navbar.vue';
 		</div>
 		<Navbar />
 		<div>
-			<RouterLink v-if="!user.value" to="/AuthForm">Register</RouterLink>
+			<RouterLink v-if="!user" to="/AuthForm">Register</RouterLink>
 		</div>
 	</header>
 	<div class="spacer"></div>

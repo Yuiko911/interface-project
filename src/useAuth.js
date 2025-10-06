@@ -1,4 +1,3 @@
-// src/useAuth.js
 import { ref } from 'vue'
 import { supabase } from './supabase'
 const user = ref(null)
