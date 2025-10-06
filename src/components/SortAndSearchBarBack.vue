@@ -1,12 +1,14 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { searchDiscogs } from '../api/discogs.js'
 
 const query = ref('')
+const type = ref('artist')
+const filter = ref('all')
+const results = ref([])
 
-const emit = defineEmits(['search'])
-function search() {
-  emit('search', query.value)
-}
+const router = useRouter()
 
 const filterOptions = [
   { label: 'All', value: 'all' },
@@ -15,6 +17,31 @@ const filterOptions = [
   { label: 'Style', value: 'style' },
   { label: 'Rating', value: 'rating' },
 ]
+
+async function search() {
+  if (!query.value) {
+    results.value = []
+    return
+  }
+
+  let searchQuery = query.value
+
+  if (filter.value === 'year') searchQuery += '&year=2020'
+  else if (filter.value === 'genre') searchQuery += '&genre=Rock'
+  else if (filter.value === 'style') searchQuery += '&style=Alternative'
+
+  const data = await searchDiscogs(searchQuery, type.value)
+  results.value = data.results?.filter(item => item.cover_image) || []
+}
+
+function selectResult(item) {
+  query.value = item.title
+  results.value = []
+
+  if (type.value === 'artist') router.push(`/artists/${item.id}`)
+  else if (type.value === 'release') router.push(`/albums/${item.id}`)
+  else if (type.value === 'master') router.push(`/songs/${item.id}`)
+}
 </script>
 
 <template>
@@ -26,6 +53,23 @@ const filterOptions = [
         type="text"
         placeholder="Search for artists, albums or songs..."
       />
+      <!--<button @click="search">Search</button> // c'est mieux sans le bouton imo-->
+
+      <ul v-if="results.length" class="autocomplete-list">
+        <li v-for="item in results" :key="item.id" @click="selectResult(item)">
+          <img :src="item.cover_image" alt="" width="40" />
+          {{ item.title }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="search-type">
+      <label for="type">Search for:</label>
+      <select id="type" v-model="type" @change="search">
+        <option value="artist">Artist</option>
+        <option value="release">Album</option>
+        <option value="master">Song</option>
+      </select>
     </div>
 
     <!-- Filter options -->

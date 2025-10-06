@@ -1,20 +1,27 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { searchDiscogs } from '../api/discogs.js'
 import SortAndSearchBar from '@/components/SortAndSearchBar.vue'
 const singles = ref([])
+
+const search = ref('')
 
 onMounted(async () => {
   const data = await searchDiscogs('Daft Punk', 'master', 'single')
   singles.value = data.results
   singles.value = data.results.filter(item => item.cover_image)
 })
+
+watch(search, async (query) => {
+  let data = await searchDiscogs(query, 'master', 'single')
+  singles.value = data.results
+})
 </script>
 
 <template>
   <div>
     <h1>Singles</h1>
-    <SortAndSearchBar />
+    <SortAndSearchBar v-on:search="(s) => search = s" />
     <div class="grid">
       <RouterLink
         v-for="single in singles"

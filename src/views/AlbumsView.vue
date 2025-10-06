@@ -1,13 +1,19 @@
 <script setup>
 import SortAndSearchBar from '@/components/SortAndSearchBar.vue'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { searchDiscogs } from '../api/discogs.js'
 
 const albums = ref([])
+const search = ref('')
 
 onMounted(async () => {
-	const data = await searchDiscogs('Radiohead', 'master', 'album')
+	let data = await searchDiscogs('Radiohead', 'master', 'album')
 	albums.value = data.results
+})
+
+watch(search, async (query) => {
+  let data = await searchDiscogs(query, 'master', 'album')
+  albums.value = data.results
 })
 </script>
 
@@ -15,7 +21,8 @@ onMounted(async () => {
 
 	<div>
 		<h1>Albums</h1>
-		<SortAndSearchBar />
+		<SortAndSearchBar v-on:search="(s) => search = s"/>
+
 		<div class="grid">
 			<RouterLink v-for="album in albums" :key="album.id" :to="`/albums/${album.id}`" class="card">
 				<img :src="album.cover_image" alt="" width="150" height="150" />
