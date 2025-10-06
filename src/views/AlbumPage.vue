@@ -39,16 +39,20 @@ onMounted(async () => {
 
 	<div class="album-data">
 		<table class="songlist"> <!--TODO: Make hidden by default ?-->
-			<tr>
-				<th>#</th>
-				<th>Title</th>
-				<th>Length</th>
-			</tr>
-			<tr v-for="track in album.tracklist">
-				<td>{{ track.position }}</td>
-				<td>{{ track.title }}</td>
-				<td>{{ track.duration }}</td>
-			</tr>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Length</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="track in album.tracklist">
+					<td>{{ track.position }}</td>
+					<td>{{ track.title }}</td>
+					<td>{{ track.duration }}</td>
+				</tr>
+			</tbody>
 		</table>
 		<div class="description"> <!--TODO: Make hidden by default ?-->
 			<p>Genre: {{ album.genres?.join([separator = ', ']) }}</p>
