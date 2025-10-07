@@ -184,6 +184,7 @@ onMounted(async () => {
   width: 100%;
   position: absolute;
   background: linear-gradient(to top, white, transparent);
+  backdrop-filter: blur(6px);
 }
 
 .homeImage {
