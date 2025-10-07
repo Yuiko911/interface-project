@@ -7,7 +7,7 @@ import { useAuth } from '../useAuth.js'
 const { user } = useAuth()
 const artists = ref([])
 const albums = ref([])
-const songs = ref([])
+const singles = ref([])
 
 onMounted(async () => {
   const featuredArtists = ['Muse', 'Daft Punk', 'Taylor Swift', 'Gorillaz', 'Arctic Monkeys']
@@ -98,7 +98,7 @@ onMounted(async () => {
   //   }
   // }
   // songs.value = songResults
-  songs.value = [
+  singles.value = [
     {
       "id": 546596,
       "title": "Daft Punk - Get Lucky",
@@ -163,9 +163,9 @@ onMounted(async () => {
     <section>
       <h2>Popular Songs</h2>
       <div class="grid">
-        <RouterLink v-for="song in songs" :key="song.id" :to="`/songs/${song.id}`" class="card">
-          <img :src="song.cover_image" alt="" />
-          <p>{{ song.title }}</p>
+        <RouterLink v-for="single in singles" :key="single.id" :to="`/singles/${single.id}`" class="card">
+          <img :src="single.cover_image" alt="" />
+          <p>{{ single.title }}</p>
         </RouterLink>
       </div>
     </section>
