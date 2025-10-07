@@ -46,7 +46,7 @@ const reviews = [
 		</div>
 	
 		<div class="reviews">
-			<p v-for="review in reviews">{{ review.user }} : "{{ review.body }}" at {{ review.timeOfReview }}</p>
+			<!-- <p v-for="review in reviews">{{ review.user }} : "{{ review.body }}" at {{ review.timeOfReview }}</p> -->
 		</div>
 	</div>
 	<div v-else>
