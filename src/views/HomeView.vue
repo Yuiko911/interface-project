@@ -46,9 +46,9 @@ const popularSongs = ['Get Lucky', 'Come Together', 'Shake It Off', 'Feel Good I
 </script>
 <template>
   <div>
-    <div class="homeHero" v-if="user"> 
+    <div class="homeHero" v-if="user">
       <div class="homeGradient"></div>
-      <img src="../assets/logo.png" class="homeImage" />
+      <img src="../assets/placeholder.png" class="homeImage" />
       <h1 class="homeText">
         Review the album of the moment and exchange with other fans.
       </h1>
