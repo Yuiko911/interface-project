@@ -46,7 +46,7 @@ const popularSongs = ['Get Lucky', 'Come Together', 'Shake It Off', 'Feel Good I
 </script>
 <template>
   <div>
-    <div class="homeHero" v-if="user">
+    <div class="homeHero">
       <div class="homeGradient"></div>
       <img src="../assets/placeholder.png" class="homeImage" />
       <h1 class="homeText">
