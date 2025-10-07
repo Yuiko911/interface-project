@@ -1,7 +1,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { searchDiscogs } from '../api/discogs.js'
+import { useAuth } from '../useAuth.js'
 
+
+const { user } = useAuth()
 const artists = ref([])
 const albums = ref([])
 const songs = ref([])
@@ -43,6 +46,14 @@ const popularSongs = ['Get Lucky', 'Come Together', 'Shake It Off', 'Feel Good I
 </script>
 <template>
   <div>
+    <div class="homeHero" v-if="user"> 
+      <div class="homeGradient"></div>
+      <img src="../assets/logo.png" class="homeImage" />
+      <h1 class="homeText">
+        Review the album of the moment and exchange with other fans.
+      </h1>
+      <RouterLink class="homeRegisterButton" v-if="!user" to="/AuthForm">Get Started</RouterLink>
+    </div>
     <!-- Featured Artists -->
     <section>
       <h2>Featured Artists</h2>
@@ -78,6 +89,46 @@ const popularSongs = ['Get Lucky', 'Come Together', 'Shake It Off', 'Feel Good I
   </div>
 </template>
 <style scoped>
+
+.homeHero {
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+  height: 600px;
+}
+
+.homeGradient {
+  height:100%;
+  width:100%;
+  position: absolute;
+  background: linear-gradient(to top, white, transparent);
+}
+
+.homeImage {
+  height:100%;
+  width:100%;
+  object-fit: cover;
+  display:block;
+}
+
+.homeText {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.homeRegisterButton {
+  background-color: rgb(17, 17, 17);
+  color:#ddd;
+  position: absolute;
+  top:70%;
+  left:50%;
+  transform: translate(-70%, -50%);
+  text-decoration: none;
+  padding: 4px;
+  border-radius: 5px;
+}
 
 .grid {
   display: flex;
